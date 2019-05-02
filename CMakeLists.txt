@@ -134,6 +134,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/turtorial_node.cpp)
+add_executable(hello_world1_node src/hello_world1.cpp)
 
 add_executable(HelloWorld3 src/HalloWorld3.cpp)
 
