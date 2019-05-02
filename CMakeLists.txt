@@ -136,6 +136,10 @@ include_directories(
 # add_executable(${PROJECT_NAME}_node src/turtorial_node.cpp)
 add_executable(hello_world1_node src/hello_world1.cpp)
 
+add_executable(HelloWorld3 src/HalloWorld3.cpp)
+
+add_executable(helloworld2 src/helloworld2.cpp)
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -186,6 +190,17 @@ add_executable(hello_world1_node src/hello_world1.cpp)
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
 
+install(TARGETS helloworld2 HelloWorld3
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+)
+
+foreach(dir launch)
+  install(DIRECTORY ${dir}/
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach(dir)
+
 #############
 ## Testing ##
 #############
@@ -198,3 +213,10 @@ add_executable(hello_world1_node src/hello_world1.cpp)
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+if (CATKIN_ENABLE_TESTING)
+  find_package(roslaunch REQUIRED)
+  roslaunch_add_file_check(launch)
+endif()
+
+
